@@ -1,5 +1,4 @@
-
-abstract class User{
+abstract class User {
   String id;
   String firstName;
   String lastName;
@@ -9,6 +8,4 @@ abstract class User{
 
   User(this.id, this.firstName, this.lastName, this.email, this.phone,
       this.gender);
-
-
 }
