@@ -1,17 +1,25 @@
 import 'package:store/authentication/authenticatable.dart';
 import 'package:store/user/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthenticationController implements Authenticatable {
+  FirebaseAuth _firebaseAuth =FirebaseAuth.instance;
+
   @override
-  Future<bool> logIn(String email, String password) {
-    // TODO: implement logIn
-    throw UnimplementedError();
+  Future<FirebaseUser> register(String email, String password) async{
+    AuthResult authResult = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+    return authResult.user;
   }
 
   @override
-  Future<User> register(String email, String password) {
-    // TODO: implement register
-    throw UnimplementedError();
+  Future<FirebaseUser>  logIn(String email, String password) async{
+    AuthResult authResult = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+    return authResult.user;
+  }
+  @override
+  Future<FirebaseUser> getCurrentUser() async{
+    FirebaseUser currentUser = await _firebaseAuth.currentUser();
+    return currentUser;
   }
 
   @override
@@ -19,6 +27,21 @@ class FirebaseAuthenticationController implements Authenticatable {
     // TODO: implement resetPassword
     throw UnimplementedError();
   }
+
+  @override
+  Future<FirebaseUser> updateProfile(User user) {
+    // TODO: implement updateProfile
+    throw UnimplementedError();
+  }
+
+  @override
+  signOut() async{
+   await _firebaseAuth.signOut();
+  }
+
+
+
+
 }
 
 class LaravelAuthenticationController implements Authenticatable {
@@ -39,4 +62,23 @@ class LaravelAuthenticationController implements Authenticatable {
     // TODO: implement resetPassword
     throw UnimplementedError();
   }
+
+  @override
+  Future<User> updateProfile(User user) {
+    // TODO: implement updateProfile
+    throw UnimplementedError();
+  }
+
+  @override
+  getCurrentUser() {
+    // TODO: implement getCurrentUser
+    throw UnimplementedError();
+  }
+
+  @override
+  signOut() {
+    // TODO: implement signOut
+    throw UnimplementedError();
+  }
 }
+

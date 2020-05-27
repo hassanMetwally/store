@@ -1,71 +1,88 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:store/authentication/authenticatable.dart';
 import 'package:store/authentication/authentication_controller.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Store());
 }
 
-class MyApp extends StatelessWidget {
+class Store extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      home: Registering(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
+class Registering extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _RegisteringState createState() => _RegisteringState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _RegisteringState extends State<Registering> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  Authenticatable _authenticatable = FirebaseAuthenticationController();
 
-  Authenticatable authenticatable = FirebaseAuthenticationController();
-
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    authenticatable.logIn("", "");
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("Auth test"),
+        centerTitle: true,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Form(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("login"),
+                TextFormField(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+
+                  decoration: InputDecoration(
+                    hintText: "email",
+                  ),
+                ),
+                TextFormField(
+                  controller: _passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: "password",
+                  ),
+                ),
+                RaisedButton(
+                  onPressed: () async {
+                    String email = _emailController.text;
+                    String password = _passwordController.text;
+                    FirebaseUser fireBaseUser = await _authenticatable.logIn(email, password);
+                    print(_authenticatable.getCurrentUser());
+                  },
+                  child: Text("logIn"),
+                ),
+                RaisedButton(
+                  onPressed: () async {
+                    _authenticatable.signOut();print(_authenticatable.getCurrentUser());
+                  },
+                  child: Text("sign out"),
+                )
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
