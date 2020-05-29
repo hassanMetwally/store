@@ -12,7 +12,7 @@ class FirebaseAuthenticationController implements Authenticatable {
   }
 
   @override
-  Future<FirebaseUser>  logIn(String email, String password) async{
+  Future<FirebaseUser>  signIn(String email, String password) async{
     AuthResult authResult = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
     return authResult.user;
   }
@@ -46,7 +46,7 @@ class FirebaseAuthenticationController implements Authenticatable {
 
 class LaravelAuthenticationController implements Authenticatable {
   @override
-  Future<bool> logIn(String email, String password) {
+  Future<bool> signIn(String email, String password) {
     // TODO: implement logIn
     throw UnimplementedError();
   }

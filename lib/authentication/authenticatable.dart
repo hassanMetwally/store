@@ -3,7 +3,7 @@ import 'package:store/user/user.dart';
 class Authenticatable {
    register(String email, String password) {}
 
-   logIn(String email, String password) {}
+   signIn(String email, String password) {}
 
    getCurrentUser() {}
 
