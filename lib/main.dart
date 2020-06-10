@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store/shop_owner_view/home.dart';
+import 'package:store/view/shop_owner_view/home.dart';
 
 
 void main() {
@@ -11,7 +11,8 @@ class Store extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      // theme: ThemeData.dark(),
+      home: ShopOwnerHome(),
     );
   }
 }

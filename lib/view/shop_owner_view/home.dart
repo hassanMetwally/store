@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:store/shop_owner_view/shared_ui/navigation_drawer.dart';
+import 'package:store/view/shop_owner_view/shared_ui/navigation_drawer.dart';
 
-class Home extends StatefulWidget {
+class ShopOwnerHome extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _ShopOwnerHomeState createState() => _ShopOwnerHomeState();
 }
 
-class _HomeState extends State<Home> {
+class _ShopOwnerHomeState extends State<ShopOwnerHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

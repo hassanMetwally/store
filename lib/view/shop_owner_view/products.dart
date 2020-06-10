@@ -27,13 +27,27 @@ class _ProductsState extends State<Products> {
             return Text('Loading...');
           default:
             return ListView(
-              children: snapshot.data.documents.map((DocumentSnapshot document) {
+              children:
+                  snapshot.data.documents.map((DocumentSnapshot document) {
                 return ListTile(
                   title: Text(document['product_title']),
                   subtitle: Text(document['product_price']),
                   trailing: IconButton(icon: Icon(Icons.delete), onPressed: (){
                     Firestore.instance.collection("products").document(document.documentID).delete();
                   }),
+//                  trailing: (document["product_image"] != null)
+//                      ? SizedBox(
+//                          width: 40,
+//                          height: 40,
+//                          child: Image(
+//                            fit: BoxFit.cover,
+//                            image: NetworkImage(document["product_image"]),
+//                          ),
+//                        )
+//                      : SizedBox(
+//                          height: 0,
+//                          width: 0,
+//                        ),
                 );
               }).toList(),
             );
