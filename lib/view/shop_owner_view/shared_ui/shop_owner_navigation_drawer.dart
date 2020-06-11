@@ -34,7 +34,6 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   }
 
   Widget _drawNavBody() {
-    // ignore: missing_return
     return ListView.builder(
       itemCount: navMenuItems.length,
       itemBuilder: (context, position) {
