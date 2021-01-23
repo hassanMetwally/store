@@ -95,7 +95,7 @@ class _ExploreState extends State<Explore> {
           child: Column(
             children: <Widget>[
               SizedBox(
-                height: MediaQuery.of(context).size.height * .19,
+                height: MediaQuery.of(context).size.height * .185,
                 child: Image(
                   image: ExactAssetImage("assets/images/placeholder_bg.png"),
                   fit: BoxFit.cover,
@@ -106,7 +106,7 @@ class _ExploreState extends State<Explore> {
                 children: <Widget>[
                   SizedBox(
                     width: 30,
-                    height: 25,
+                    height: 21,
                     child: IconButton(
                         padding: EdgeInsets.only(left: 10,top: 3),
                         iconSize: 18,
@@ -118,7 +118,7 @@ class _ExploreState extends State<Explore> {
                   ),
                   SizedBox(
                     width: 30,
-                    height: 25,
+                    height: 21,
                     child: IconButton(
                       padding: EdgeInsets.only(right: 10,top: 3),
                         iconSize: 18,

@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Duration(seconds: 1, milliseconds: 30),
       () => Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => LogIn()),
+          MaterialPageRoute(builder: (context) => SignIn()),
           (Route route) => false),
     );
   }

@@ -4,14 +4,14 @@ import 'package:store/view/costumer_view/screens/customer_home.dart';
 import 'package:store/view/costumer_view/screens/customer_registering.dart';
 import 'package:store/view/shop_owner_view/shop_owner_home.dart';
 
-class LogIn extends StatefulWidget {
+class SignIn extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return LoginState();
   }
 }
 
-class LoginState extends State<LogIn> {
+class LoginState extends State<SignIn> {
   TextEditingController _userController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -36,13 +36,13 @@ class LoginState extends State<LogIn> {
         child: ListView(
           padding: EdgeInsets.symmetric(horizontal: 25),
           children: <Widget>[
-            Padding(padding: EdgeInsets.only(top: 10.0)),
+            Padding(padding: EdgeInsets.only(top: 50.0)),
             Image.asset(
               "assets/images/splashLogo.jpeg",
               width: 250,
               height: 250,
             ),
-            Padding(padding: EdgeInsets.all(10.0)),
+            Padding(padding: EdgeInsets.all(30.0)),
             TextField(
               controller: _userController,
               keyboardType: TextInputType.emailAddress,
@@ -131,7 +131,8 @@ class LoginState extends State<LogIn> {
                 FlatButton(
                   child: Text('shop owner?'),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (contex){
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (contex) {
                       return ShopOwnerHome();
                     }));
                   },

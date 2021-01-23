@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:store/navigation_menu_item/nav_menu_item.dart';
+import 'package:store/view/costumer_view/screens/customer_sign_in.dart';
 import 'package:store/view/costumer_view/screens/three_d_model.dart';
-
 
 class NavigationDrawer extends StatefulWidget {
   @override
@@ -23,7 +23,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     NavMenuItem("Orders", () => ThreeDModel()),
   ];
 
-  TextStyle drawerTextStyle =TextStyle(color: Color(0xffeef1f8));
+  TextStyle drawerTextStyle = TextStyle(color: Color(0xffeef1f8));
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
         FlatButton(
           color: Colors.black26,
           onPressed: () {},
-          child: Text("hassan metwally",style: drawerTextStyle,),
+          child: Text(
+            "hassan metwally",
+            style: drawerTextStyle,
+          ),
           shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(18.0),
               side: BorderSide(color: Color(0xffeef1f8))),
@@ -78,7 +81,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
           margin: EdgeInsets.symmetric(vertical: 6),
           color: Colors.black26,
           child: ListTile(
-            title: Text(navMenuItems[position].title,style: drawerTextStyle,),
+            title: Text(
+              navMenuItems[position].title,
+              style: drawerTextStyle,
+            ),
             trailing: Icon(
               Icons.arrow_forward_ios,
               size: 13,
@@ -104,14 +110,25 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
-          Text("Log Out",style: drawerTextStyle,),
+          Text(
+            "Log Out",
+            style: drawerTextStyle,
+          ),
           SizedBox(
             width: 12,
           ),
-          Icon(Icons.lock_outline,color:  Color(0xffeef1f8),),
+          Icon(
+            Icons.lock_outline,
+            color: Color(0xffeef1f8),
+          ),
         ],
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushAndRemoveUntil(context,
+            MaterialPageRoute(builder: (context) {
+          return SignIn();
+        }), (route) => false);
+      },
     );
   }
 }
